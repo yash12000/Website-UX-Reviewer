@@ -1,5 +1,4 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
-
 export default function ReviewCard({ review }) {
   if (!review) return null;
 
