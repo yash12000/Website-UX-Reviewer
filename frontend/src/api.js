@@ -1,5 +1,4 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: "https://your-backend.onrender.com/api"
-});
+baseURL: "https://website-ux-reviewer-ohw7.onrender.com/api"});
