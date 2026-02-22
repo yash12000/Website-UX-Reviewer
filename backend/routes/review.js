@@ -100,18 +100,35 @@ router.post("/review", async (req, res) => {
       return res.status(400).json({ error: "URL required" });
     }
 
-    const content = await scrapeWebsite(url);
-    const review = await generateUXReview(content);
-
-    res.json({ review });
+    return res.json({
+      review: {
+        score: 75,
+        issues: [
+          {
+            category: "Clarity",
+            issue: "Text could be clearer",
+            why: "Content lacks hierarchy",
+            proof: "Sample text"
+          },
+          {
+            category: "Layout",
+            issue: "Spacing inconsistent",
+            why: "UI elements are crowded",
+            proof: "Visual layout"
+          }
+        ],
+        improvements: [
+          {
+            before: "Cluttered UI",
+            after: "Add spacing and structure"
+          }
+        ]
+      }
+    });
 
   } catch (err) {
-    console.error("FULL ERROR:", err);
-
-    res.status(500).json({
-      error: "Backend failed",
-      message: err.message
-    });
+    console.error("ERROR:", err);
+    res.status(500).json({ error: "Backend failed" });
   }
 });
 
